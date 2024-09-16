@@ -4,7 +4,9 @@
     <p class="article__text">
       {{ article.preview }}
     </p>
-    <NuxtLink :to="`/articles/${article.id}`" class="article__link">Read more</NuxtLink>
+    <NuxtLink :to="`/articles/${article.id}`" class="article__link"
+      >Read more</NuxtLink
+    >
   </div>
 </template>
 
@@ -24,9 +26,9 @@ const props = defineProps<{
     cursor: pointer;
   }
 
-  &:hover .article__link {    
-      opacity: 1;
-      visibility: visible;      
+  &:hover .article__link {
+    opacity: 1;
+    visibility: visible;
   }
 }
 </style>
