@@ -1,11 +1,11 @@
 <template>
   <div class="pagination">
     <button
-      class="pagination__control"
+      class="pagination__control pagination__control--previous"
       @click="back"
       :class="firstIndex > 0 && 'pagination__control--active'"
     >
-      <
+      <img src="~/assets/images/arrow.svg" alt="<" />
     </button>
 
     <button
@@ -23,7 +23,7 @@
       @click="next"
       :class="firstIndex < showPages() && 'pagination__control--active'"
     >
-      >
+      <img src="~/assets/images/arrow.svg" alt=">" />
     </button>
   </div>
 </template>
@@ -72,17 +72,58 @@ function showPages() {
 
 <style scoped lang="scss">
 .pagination {
+  display: flex;
+  gap: 8px;
+
   &__control {
-    display: none;
+    position: absolute;
+
+    opacity: 0;
+    visibility: hidden;
+    
+    transition: opacity 0.2s ease-in-out;
 
     &--active {
-      display: block;
+      position: static;
+      
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__button,
+  &__control {
+    width: 44px;
+    height: 44px;
+
+    border-radius: 12px;
+
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: #e8e8e8;
     }
   }
 
   &__button {
+    font-size: 16px;
+    background-color: #f3f3f3;
+
     &--active {
-      background: green;
+      background-color: #101010;
+      color: #ffffff;
+
+      &:hover {
+        background-color: #101010;
+      }
+    }
+  }
+
+  &__control {
+    border: 1px solid #e8e8e8;
+
+    &--previous {
+      transform: rotate(180deg);
     }
   }
 }
