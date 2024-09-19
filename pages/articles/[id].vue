@@ -25,13 +25,11 @@ import type { TArticle } from "~/types";
 
 const route = useRoute();
 
-const { data: article } = await useAsyncData(async () => {
-  const id = route.params.id;
-  const response = await $fetch(
-    `https://6082e3545dbd2c001757abf5.mockapi.io/qtim-test-work/posts/${id}`
-  );
-  return response as TArticle;
-});
+const { data } = await useFetch(
+  `https://6082e3545dbd2c001757abf5.mockapi.io/qtim-test-work/posts/${route.params.id}`
+);
+
+const article = data.value as TArticle;
 </script>
 
 <style scoped lang="scss">
